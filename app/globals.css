@@ -226,6 +226,12 @@ h3 {
   color: var(--accent-strong);
 }
 
+.contact-links-hero a:first-child:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: #ffffff;
+}
+
 .hero-scene {
   isolation: isolate;
   min-height: 460px;
