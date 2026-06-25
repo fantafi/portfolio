@@ -14,7 +14,7 @@ export default function PortfolioPage() {
   const copy = portfolioContent[language];
 
   return (
-    <main className="portfolio-shell">
+    <main className="portfolio-shell" lang={language}>
       <header className="site-nav">
         <a className="site-mark" href="#top" aria-label={copy.nav.name}>
           {copy.nav.name}
@@ -79,7 +79,7 @@ export default function PortfolioPage() {
         </div>
         <div className="about-lists">
           <div>
-            <h3>Principles</h3>
+            <h3>{copy.about.principlesTitle}</h3>
             <ul>
               {copy.about.principles.map((principle) => (
                 <li key={principle}>{principle}</li>
@@ -87,7 +87,7 @@ export default function PortfolioPage() {
             </ul>
           </div>
           <div>
-            <h3>Stack</h3>
+            <h3>{copy.about.stackTitle}</h3>
             <ul className="stack-list">
               {copy.about.stack.map((tool) => (
                 <li key={tool}>{tool}</li>

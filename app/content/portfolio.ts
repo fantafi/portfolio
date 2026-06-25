@@ -54,7 +54,9 @@ export type PortfolioCopy = {
     eyebrow: string;
     title: string;
     body: string;
+    principlesTitle: string;
     principles: string[];
+    stackTitle: string;
     stack: string[];
   };
   contact: {
@@ -174,7 +176,9 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       eyebrow: "About",
       title: "Calm execution, clear systems, practical AI.",
       body: "I enjoy building software that people can understand, use, and keep improving. My strongest work sits between product thinking, full-stack implementation, and useful automation.",
+      principlesTitle: "Principles",
       principles: ["Keep scope sharp", "Make interfaces obvious", "Prefer maintainable systems", "Use AI where it creates real leverage"],
+      stackTitle: "Stack",
       stack: ["TypeScript", "React", "Next.js", "Node.js", "Cloudflare", "Drizzle", "Postgres", "Three.js", "AI tooling"],
     },
     contact: {
@@ -274,7 +278,9 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       eyebrow: "Giới thiệu",
       title: "Làm việc điềm tĩnh, hệ thống rõ ràng, AI thực dụng.",
       body: "Tôi thích xây dựng phần mềm dễ hiểu, dễ dùng và dễ tiếp tục cải thiện. Điểm mạnh của tôi nằm ở giao điểm giữa tư duy sản phẩm, full-stack implementation và automation hữu ích.",
+      principlesTitle: "Nguyên tắc làm việc",
       principles: ["Giữ scope sắc nét", "Làm giao diện dễ hiểu", "Ưu tiên hệ thống dễ bảo trì", "Dùng AI khi tạo ra leverage thật"],
+      stackTitle: "Công nghệ",
       stack: ["TypeScript", "React", "Next.js", "Node.js", "Cloudflare", "Drizzle", "Postgres", "Three.js", "AI tooling"],
     },
     contact: {
