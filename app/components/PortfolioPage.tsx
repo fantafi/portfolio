@@ -1,0 +1,108 @@
+"use client";
+
+import { useState } from "react";
+import { portfolioContent, type Language } from "../content/portfolio";
+import ContactLinks from "./ContactLinks";
+import HeroScene from "./HeroScene";
+import LanguageToggle from "./LanguageToggle";
+import ProjectCard from "./ProjectCard";
+import SectionHeader from "./SectionHeader";
+import ServiceCard from "./ServiceCard";
+
+export default function PortfolioPage() {
+  const [language, setLanguage] = useState<Language>("en");
+  const copy = portfolioContent[language];
+
+  return (
+    <main className="portfolio-shell">
+      <header className="site-nav">
+        <a className="site-mark" href="#top" aria-label={copy.nav.name}>
+          {copy.nav.name}
+        </a>
+        <nav aria-label="Primary navigation">
+          {copy.nav.links.map((link) => (
+            <a href={link.href} key={link.href}>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+        <LanguageToggle
+          labels={copy.languageToggle}
+          onChange={setLanguage}
+          value={language}
+        />
+      </header>
+
+      <section className="hero-section" id="top">
+        <div className="hero-copy">
+          <p className="eyebrow">{copy.hero.eyebrow}</p>
+          <h1>{copy.hero.title}</h1>
+          <p className="hero-lede">{copy.hero.body}</p>
+          <p className="hero-availability">{copy.hero.availability}</p>
+          <ContactLinks links={copy.contactLinks} />
+        </div>
+        <HeroScene />
+      </section>
+
+      <section className="content-section" id="expertise">
+        <SectionHeader {...copy.expertise} />
+        <div className="card-grid three-columns">
+          {copy.expertise.items.map((item, index) => (
+            <ServiceCard item={item} index={index} key={item.title} />
+          ))}
+        </div>
+      </section>
+
+      <section className="content-section section-band" id="services">
+        <SectionHeader {...copy.services} />
+        <div className="card-grid three-columns">
+          {copy.services.items.map((item, index) => (
+            <ServiceCard item={item} index={index} key={item.title} />
+          ))}
+        </div>
+      </section>
+
+      <section className="content-section" id="work">
+        <SectionHeader {...copy.work} />
+        <div className="card-grid three-columns">
+          {copy.work.items.map((item) => (
+            <ProjectCard item={item} key={item.title} />
+          ))}
+        </div>
+      </section>
+
+      <section className="content-section about-section" id="about">
+        <div>
+          <p className="eyebrow">{copy.about.eyebrow}</p>
+          <h2>{copy.about.title}</h2>
+          <p>{copy.about.body}</p>
+        </div>
+        <div className="about-lists">
+          <div>
+            <h3>Principles</h3>
+            <ul>
+              {copy.about.principles.map((principle) => (
+                <li key={principle}>{principle}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3>Stack</h3>
+            <ul className="stack-list">
+              {copy.about.stack.map((tool) => (
+                <li key={tool}>{tool}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer className="content-section contact-section" id="contact">
+        <p className="eyebrow">{copy.contact.eyebrow}</p>
+        <h2>{copy.contact.title}</h2>
+        <p>{copy.contact.body}</p>
+        <ContactLinks links={copy.contactLinks} variant="footer" />
+      </footer>
+    </main>
+  );
+}
