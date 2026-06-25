@@ -1,6 +1,7 @@
 import type { Language } from "../content/portfolio";
 
 type LanguageToggleProps = {
+  ariaLabel: string;
   labels: Record<Language, string>;
   value: Language;
   onChange: (language: Language) => void;
@@ -9,12 +10,13 @@ type LanguageToggleProps = {
 const languages: Language[] = ["en", "vi"];
 
 export default function LanguageToggle({
+  ariaLabel,
   labels,
   value,
   onChange,
 }: LanguageToggleProps) {
   return (
-    <div className="language-toggle" aria-label="Language selector">
+    <div className="language-toggle" aria-label={ariaLabel}>
       {languages.map((language) => (
         <button
           aria-pressed={value === language}

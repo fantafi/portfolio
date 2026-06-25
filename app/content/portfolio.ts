@@ -25,6 +25,11 @@ export type PortfolioCopy = {
     links: Array<{ label: string; href: string }>;
   };
   languageToggle: Record<Language, string>;
+  accessibility: {
+    primaryNavigation: string;
+    languageSelector: string;
+    serviceTagsLabel: string;
+  };
   hero: {
     eyebrow: string;
     title: string;
@@ -96,6 +101,11 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       ],
     },
     languageToggle: { en: "EN", vi: "VI" },
+    accessibility: {
+      primaryNavigation: "Primary navigation",
+      languageSelector: "Language selector",
+      serviceTagsLabel: "Tags for",
+    },
     hero: {
       eyebrow: "Full-stack Software Engineer / AI Tooling",
       title: "I build reliable products and practical AI workflows.",
@@ -198,6 +208,11 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       ],
     },
     languageToggle: { en: "EN", vi: "VI" },
+    accessibility: {
+      primaryNavigation: "Điều hướng chính",
+      languageSelector: "Chọn ngôn ngữ",
+      serviceTagsLabel: "Nhãn cho",
+    },
     hero: {
       eyebrow: "Full-stack Software Engineer / AI Tooling",
       title: "Tôi xây dựng sản phẩm ổn định và workflow AI thực dụng.",

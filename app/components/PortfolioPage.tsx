@@ -19,7 +19,7 @@ export default function PortfolioPage() {
         <a className="site-mark" href="#top" aria-label={copy.nav.name}>
           {copy.nav.name}
         </a>
-        <nav aria-label="Primary navigation">
+        <nav aria-label={copy.accessibility.primaryNavigation}>
           {copy.nav.links.map((link) => (
             <a href={link.href} key={link.href}>
               {link.label}
@@ -27,6 +27,7 @@ export default function PortfolioPage() {
           ))}
         </nav>
         <LanguageToggle
+          ariaLabel={copy.accessibility.languageSelector}
           labels={copy.languageToggle}
           onChange={setLanguage}
           value={language}
@@ -48,7 +49,12 @@ export default function PortfolioPage() {
         <SectionHeader {...copy.expertise} />
         <div className="card-grid three-columns">
           {copy.expertise.items.map((item, index) => (
-            <ServiceCard item={item} index={index} key={item.title} />
+            <ServiceCard
+              item={item}
+              index={index}
+              key={item.title}
+              tagListLabel={copy.accessibility.serviceTagsLabel}
+            />
           ))}
         </div>
       </section>
@@ -57,7 +63,12 @@ export default function PortfolioPage() {
         <SectionHeader {...copy.services} />
         <div className="card-grid three-columns">
           {copy.services.items.map((item, index) => (
-            <ServiceCard item={item} index={index} key={item.title} />
+            <ServiceCard
+              item={item}
+              index={index}
+              key={item.title}
+              tagListLabel={copy.accessibility.serviceTagsLabel}
+            />
           ))}
         </div>
       </section>
