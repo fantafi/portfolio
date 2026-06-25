@@ -16,7 +16,7 @@ export default function LanguageToggle({
   onChange,
 }: LanguageToggleProps) {
   return (
-    <div className="language-toggle" aria-label={ariaLabel}>
+    <div className="language-toggle" aria-label={ariaLabel} role="group">
       {languages.map((language) => (
         <button
           aria-pressed={value === language}
