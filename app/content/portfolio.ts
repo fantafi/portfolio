@@ -150,6 +150,24 @@ export const contactLinks: ContactLink[] = [
   },
 ];
 
+const vietnameseContactLinks: ContactLink[] = [
+  {
+    label: "Email",
+    href: "mailto:hello@example.com",
+    description: "Thay bằng email công việc chính của bạn.",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/your-github",
+    description: "Thay bằng hồ sơ GitHub của bạn.",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/your-linkedin",
+    description: "Thay bằng hồ sơ LinkedIn của bạn.",
+  },
+];
+
 export const portfolioContent: Record<Language, PortfolioCopy> = {
   en: {
     nav: {
@@ -280,7 +298,7 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       body: "Tôi giúp đội ngũ biến ý tưởng sản phẩm thành web app, internal tool và hệ thống automation rõ ràng, dễ bảo trì, sẵn sàng triển khai.",
       availability: "Sẵn sàng cho vị trí software engineer, freelance build và hợp tác theo project.",
     },
-    contactLinks,
+    contactLinks: vietnameseContactLinks,
     expertise: {
       eyebrow: "Năng lực",
       title: "Kỹ thuật full-stack với tư duy sản phẩm.",
@@ -501,7 +519,7 @@ export const servicesPageContent: Record<Language, ServicesPageCopy> = {
       cta: "Trao đổi ý tưởng",
       secondaryCta: "Xem portfolio",
     },
-    contactLinks,
+    contactLinks: vietnameseContactLinks,
     pillars: {
       eyebrow: "Dịch vụ",
       title: "Ba cách tôi giúp team đi nhanh hơn.",
