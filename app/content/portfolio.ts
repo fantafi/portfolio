@@ -6,6 +6,11 @@ export type ContactLink = {
   description: string;
 };
 
+export type NavLink = {
+  label: string;
+  href: string;
+};
+
 export type Service = {
   title: string;
   body: string;
@@ -19,10 +24,66 @@ export type Project = {
   outcomes: string[];
 };
 
+export type ProcessStep = {
+  title: string;
+  body: string;
+};
+
+export type ServicesPageCopy = {
+  nav: {
+    name: string;
+    links: NavLink[];
+  };
+  languageToggle: Record<Language, string>;
+  accessibility: {
+    primaryNavigation: string;
+    languageSelector: string;
+    serviceTagsLabel: string;
+    orbitLabel: string;
+  };
+  hero: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    cta: string;
+    secondaryCta: string;
+  };
+  contactLinks: ContactLink[];
+  pillars: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    items: Service[];
+  };
+  packages: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    items: Service[];
+  };
+  process: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    steps: ProcessStep[];
+  };
+  fit: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    items: string[];
+  };
+  contact: {
+    eyebrow: string;
+    title: string;
+    body: string;
+  };
+};
+
 export type PortfolioCopy = {
   nav: {
     name: string;
-    links: Array<{ label: string; href: string }>;
+    links: NavLink[];
   };
   languageToggle: Record<Language, string>;
   accessibility: {
@@ -95,7 +156,7 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       name: "Tai Pham",
       links: [
         { label: "Expertise", href: "#expertise" },
-        { label: "Services", href: "#services" },
+        { label: "Services", href: "/services" },
         { label: "Work", href: "#work" },
         { label: "Contact", href: "#contact" },
       ],
@@ -202,7 +263,7 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       name: "Tai Pham",
       links: [
         { label: "Năng lực", href: "#expertise" },
-        { label: "Dịch vụ", href: "#services" },
+        { label: "Dịch vụ", href: "/services" },
         { label: "Dự án", href: "#work" },
         { label: "Liên hệ", href: "#contact" },
       ],
@@ -302,6 +363,227 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       eyebrow: "Liên hệ",
       title: "Bạn có role, project hoặc workflow muốn trao đổi?",
       body: "Liên hệ trực tiếp qua email hoặc kết nối qua GitHub và LinkedIn.",
+    },
+  },
+};
+
+export const servicesPageContent: Record<Language, ServicesPageCopy> = {
+  en: {
+    nav: {
+      name: "Tai Pham",
+      links: [
+        { label: "Home", href: "/" },
+        { label: "Services", href: "/services" },
+        { label: "Work", href: "/#work" },
+        { label: "Contact", href: "/#contact" },
+      ],
+    },
+    languageToggle: { en: "EN", vi: "VI" },
+    accessibility: {
+      primaryNavigation: "Primary navigation",
+      languageSelector: "Language selector",
+      serviceTagsLabel: "Tags for",
+      orbitLabel: "Service orbit showing web app, mobile app, and AI tooling",
+    },
+    hero: {
+      eyebrow: "Freelance product development",
+      title: "Build web apps, mobile apps, and AI tools that are ready to ship.",
+      body: "I partner with founders and teams to turn clear ideas into usable products, practical automation, and maintainable software systems.",
+      cta: "Discuss your idea",
+      secondaryCta: "View portfolio",
+    },
+    contactLinks,
+    pillars: {
+      eyebrow: "Services",
+      title: "Three ways I help teams move faster.",
+      body: "Each engagement is scoped around a concrete outcome, a maintainable codebase, and a clean handoff.",
+      items: [
+        {
+          title: "Web app development",
+          body: "Design and build responsive web apps, dashboards, portals, and internal tools with reliable frontend and API foundations.",
+          tags: ["React", "Next.js", "TypeScript", "APIs"],
+        },
+        {
+          title: "Mobile app development",
+          body: "Create mobile-first product experiences, companion apps, and cross-platform flows that feel focused and practical.",
+          tags: ["Mobile UX", "Product flows", "Launch support"],
+        },
+        {
+          title: "AI tooling and automation",
+          body: "Add AI-assisted workflows, internal assistants, and review loops that reduce repetitive work without hiding control.",
+          tags: ["AI workflows", "Automation", "Human review"],
+        },
+      ],
+    },
+    packages: {
+      eyebrow: "Engagement models",
+      title: "Focused packages for common project needs.",
+      body: "Choose a shape that matches where your product is today.",
+      items: [
+        {
+          title: "MVP / Product build",
+          body: "Take a validated concept from scope to a polished first release with UI, product structure, and deployment.",
+          tags: ["Discovery", "Build", "Launch"],
+        },
+        {
+          title: "Modernization sprint",
+          body: "Improve brittle screens, refactor risky frontend areas, and make the app easier to extend safely.",
+          tags: ["UX cleanup", "Refactor", "Performance"],
+        },
+        {
+          title: "AI workflow integration",
+          body: "Introduce AI into support, operations, dashboards, or knowledge workflows with clear review boundaries.",
+          tags: ["Prompts", "Pipelines", "Review loops"],
+        },
+      ],
+    },
+    process: {
+      eyebrow: "Process",
+      title: "A clear path from idea to shipped product.",
+      body: "The process stays lightweight, but every phase has a concrete output.",
+      steps: [
+        {
+          title: "Discover",
+          body: "Clarify the goal, users, constraints, success signals, and the smallest useful release.",
+        },
+        {
+          title: "Design",
+          body: "Shape the core flows, information architecture, data boundaries, and implementation plan.",
+        },
+        {
+          title: "Build",
+          body: "Implement the product in focused iterations with regular checkpoints and working previews.",
+        },
+        {
+          title: "Launch",
+          body: "Prepare deployment, polish the handoff, and leave the codebase ready for the next iteration.",
+        },
+      ],
+    },
+    fit: {
+      eyebrow: "Good fit",
+      title: "Reach out when the project needs senior execution without heavy process.",
+      body: "The best projects have a clear business goal, an owner who can give feedback, and room to make pragmatic product decisions.",
+      items: [
+        "You need a web app, mobile app, or AI workflow built from a defined idea.",
+        "You have an existing product that needs modernization or clearer UX.",
+        "You want AI automation that still keeps human review and operational clarity.",
+        "You value maintainable code and a clean handoff as much as the first launch.",
+      ],
+    },
+    contact: {
+      eyebrow: "Start",
+      title: "Have an idea worth turning into a real product?",
+      body: "Send a short note about the goal, timeline, and current state. I will help shape the next practical step.",
+    },
+  },
+  vi: {
+    nav: {
+      name: "Tai Pham",
+      links: [
+        { label: "Trang chủ", href: "/" },
+        { label: "Dịch vụ", href: "/services" },
+        { label: "Dự án", href: "/#work" },
+        { label: "Liên hệ", href: "/#contact" },
+      ],
+    },
+    languageToggle: { en: "EN", vi: "VI" },
+    accessibility: {
+      primaryNavigation: "Điều hướng chính",
+      languageSelector: "Chọn ngôn ngữ",
+      serviceTagsLabel: "Nhãn cho",
+      orbitLabel: "Mô hình orbit cho web app, mobile app và AI tooling",
+    },
+    hero: {
+      eyebrow: "Freelance product development",
+      title: "Xây dựng web app, mobile app và AI tool sẵn sàng triển khai.",
+      body: "Tôi đồng hành với founder và team để biến ý tưởng rõ ràng thành sản phẩm dùng được, automation thực tế và hệ thống phần mềm dễ bảo trì.",
+      cta: "Trao đổi ý tưởng",
+      secondaryCta: "Xem portfolio",
+    },
+    contactLinks,
+    pillars: {
+      eyebrow: "Dịch vụ",
+      title: "Ba cách tôi giúp team đi nhanh hơn.",
+      body: "Mỗi engagement được scope quanh một outcome rõ, codebase dễ bảo trì và bàn giao gọn.",
+      items: [
+        {
+          title: "Phát triển web app",
+          body: "Thiết kế và xây dựng web app, dashboard, portal và internal tool với frontend và API foundation ổn định.",
+          tags: ["React", "Next.js", "TypeScript", "APIs"],
+        },
+        {
+          title: "Phát triển mobile app",
+          body: "Tạo trải nghiệm mobile-first, companion app và flow cross-platform tập trung vào tính thực dụng.",
+          tags: ["Mobile UX", "Product flows", "Launch support"],
+        },
+        {
+          title: "AI tooling và automation",
+          body: "Thêm workflow AI-assisted, internal assistant và review loop để giảm việc lặp lại mà vẫn giữ quyền kiểm soát.",
+          tags: ["AI workflows", "Automation", "Human review"],
+        },
+      ],
+    },
+    packages: {
+      eyebrow: "Mô hình hợp tác",
+      title: "Các gói tập trung cho nhu cầu project phổ biến.",
+      body: "Chọn hình thức phù hợp với trạng thái hiện tại của sản phẩm.",
+      items: [
+        {
+          title: "MVP / Product build",
+          body: "Đưa concept đã rõ scope thành bản release đầu tiên với UI, cấu trúc sản phẩm và deployment.",
+          tags: ["Discovery", "Build", "Launch"],
+        },
+        {
+          title: "Modernization sprint",
+          body: "Cải thiện màn hình cũ, refactor vùng frontend rủi ro và giúp app dễ mở rộng an toàn hơn.",
+          tags: ["UX cleanup", "Refactor", "Performance"],
+        },
+        {
+          title: "Tích hợp workflow AI",
+          body: "Đưa AI vào support, operations, dashboard hoặc knowledge workflow với ranh giới review rõ ràng.",
+          tags: ["Prompts", "Pipelines", "Review loops"],
+        },
+      ],
+    },
+    process: {
+      eyebrow: "Quy trình",
+      title: "Đường đi rõ từ ý tưởng tới sản phẩm chạy thật.",
+      body: "Quy trình gọn nhẹ, nhưng mỗi giai đoạn đều có đầu ra cụ thể.",
+      steps: [
+        {
+          title: "Discover",
+          body: "Làm rõ mục tiêu, người dùng, ràng buộc, tín hiệu thành công và bản release nhỏ nhất có giá trị.",
+        },
+        {
+          title: "Design",
+          body: "Định hình flow chính, kiến trúc thông tin, ranh giới dữ liệu và kế hoạch triển khai.",
+        },
+        {
+          title: "Build",
+          body: "Xây dựng theo các vòng lặp tập trung, có checkpoint đều và bản preview chạy được.",
+        },
+        {
+          title: "Launch",
+          body: "Chuẩn bị deployment, hoàn thiện bàn giao và để lại codebase sẵn sàng cho vòng tiếp theo.",
+        },
+      ],
+    },
+    fit: {
+      eyebrow: "Phù hợp",
+      title: "Liên hệ khi project cần senior execution nhưng không muốn quy trình nặng.",
+      body: "Project phù hợp nhất khi có mục tiêu kinh doanh rõ, người phụ trách feedback và không gian cho quyết định sản phẩm thực dụng.",
+      items: [
+        "Bạn cần xây web app, mobile app hoặc AI workflow từ một ý tưởng đã rõ.",
+        "Bạn có sản phẩm hiện tại cần modernization hoặc UX rõ ràng hơn.",
+        "Bạn muốn AI automation nhưng vẫn giữ review của con người và vận hành minh bạch.",
+        "Bạn coi trọng code dễ bảo trì và bàn giao gọn ngang với bản launch đầu tiên.",
+      ],
+    },
+    contact: {
+      eyebrow: "Bắt đầu",
+      title: "Bạn có ý tưởng đáng để biến thành sản phẩm thật?",
+      body: "Gửi vài dòng về mục tiêu, timeline và trạng thái hiện tại. Tôi sẽ giúp xác định bước thực tế tiếp theo.",
     },
   },
 };
