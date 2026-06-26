@@ -108,6 +108,7 @@ export type PortfolioCopy = {
     eyebrow: string;
     title: string;
     body: string;
+    cta: string;
     items: Service[];
   };
   work: {
@@ -218,6 +219,7 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       eyebrow: "Freelance services",
       title: "Focused project help from idea to launch.",
       body: "Small, well-scoped engagements for teams that need senior execution without unnecessary process.",
+      cta: "Explore services",
       items: [
         {
           title: "MVP web app build",
@@ -325,6 +327,7 @@ export const portfolioContent: Record<Language, PortfolioCopy> = {
       eyebrow: "Dịch vụ freelance",
       title: "Hỗ trợ project từ ý tưởng tới bản chạy được.",
       body: "Các gói hợp tác gọn, rõ phạm vi, phù hợp với đội ngũ cần tốc độ và chất lượng kỹ thuật.",
+      cta: "Xem dịch vụ",
       items: [
         {
           title: "Xây dựng MVP web app",

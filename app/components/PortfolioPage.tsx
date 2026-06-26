@@ -4,10 +4,10 @@ import { useState } from "react";
 import { portfolioContent, type Language } from "../content/portfolio";
 import ContactLinks from "./ContactLinks";
 import HeroScene from "./HeroScene";
-import LanguageToggle from "./LanguageToggle";
 import ProjectCard from "./ProjectCard";
 import SectionHeader from "./SectionHeader";
 import ServiceCard from "./ServiceCard";
+import SiteNav from "./SiteNav";
 
 export default function PortfolioPage() {
   const [language, setLanguage] = useState<Language>("en");
@@ -15,24 +15,15 @@ export default function PortfolioPage() {
 
   return (
     <main className="portfolio-shell" lang={language}>
-      <header className="site-nav">
-        <a className="site-mark" href="#top" aria-label={copy.nav.name}>
-          {copy.nav.name}
-        </a>
-        <nav aria-label={copy.accessibility.primaryNavigation}>
-          {copy.nav.links.map((link) => (
-            <a href={link.href} key={link.href}>
-              {link.label}
-            </a>
-          ))}
-        </nav>
-        <LanguageToggle
-          ariaLabel={copy.accessibility.languageSelector}
-          labels={copy.languageToggle}
-          onChange={setLanguage}
-          value={language}
-        />
-      </header>
+      <SiteNav
+        ariaLabel={copy.accessibility.primaryNavigation}
+        language={language}
+        languageLabels={copy.languageToggle}
+        languageSelectorLabel={copy.accessibility.languageSelector}
+        links={copy.nav.links}
+        name={copy.nav.name}
+        onLanguageChange={setLanguage}
+      />
 
       <section className="hero-section" id="top">
         <div className="hero-copy">
@@ -59,18 +50,15 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="content-section section-band" id="services">
-        <SectionHeader {...copy.services} />
-        <div className="card-grid three-columns">
-          {copy.services.items.map((item, index) => (
-            <ServiceCard
-              item={item}
-              index={index}
-              key={item.title}
-              tagListLabel={copy.accessibility.serviceTagsLabel}
-            />
-          ))}
-        </div>
+      <section className="content-section section-band services-teaser" id="services">
+        <SectionHeader
+          eyebrow={copy.services.eyebrow}
+          title={copy.services.title}
+          body={copy.services.body}
+        />
+        <a className="text-link" href="/services">
+          {copy.services.cta}
+        </a>
       </section>
 
       <section className="content-section" id="work">
