@@ -28,9 +28,9 @@ export default function SiteNav({
       </Link>
       <nav aria-label={ariaLabel}>
         {links.map((link) => (
-          <a href={link.href} key={`${link.label}-${link.href}`}>
+          <Link href={link.href} key={link.href}>
             {link.label}
-          </a>
+          </Link>
         ))}
       </nav>
       <LanguageToggle
