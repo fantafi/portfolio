@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { portfolioContent, type Language } from "../content/portfolio";
 import ContactLinks from "./ContactLinks";
@@ -56,9 +57,9 @@ export default function PortfolioPage() {
           title={copy.services.title}
           body={copy.services.body}
         />
-        <a className="text-link" href="/services">
+        <Link className="text-link" href="/services">
           {copy.services.cta}
-        </a>
+        </Link>
       </section>
 
       <section className="content-section" id="work">
