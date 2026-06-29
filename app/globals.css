@@ -99,7 +99,10 @@ a {
 
 .site-nav a:focus-visible,
 .contact-links a:focus-visible,
-.language-toggle button:focus-visible {
+.language-toggle button:focus-visible,
+.text-link:focus-visible,
+.primary-action:focus-visible,
+.secondary-action:focus-visible {
   outline: 3px solid rgba(20, 122, 112, 0.32);
   outline-offset: 3px;
 }
@@ -405,6 +408,10 @@ h3 {
   position: static;
 }
 
+.service-orbit-scene:has(.service-orbit-fallback) .service-orbit-labels {
+  display: none;
+}
+
 .content-section {
   padding: 86px 40px;
 }
@@ -513,7 +520,7 @@ h3 {
 }
 
 .process-list p,
-.fit-section p,
+.fit-section p:not(.eyebrow),
 .fit-list li {
   color: var(--muted);
   line-height: 1.65;
