@@ -1,0 +1,109 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { servicesPageContent, type Language } from "../content/portfolio";
+import ContactLinks from "./ContactLinks";
+import SectionHeader from "./SectionHeader";
+import ServiceCard from "./ServiceCard";
+import ServiceOrbitScene from "./ServiceOrbitScene";
+import SiteNav from "./SiteNav";
+
+export default function ServicesPage() {
+  const [language, setLanguage] = useState<Language>("en");
+  const copy = servicesPageContent[language];
+
+  return (
+    <main className="portfolio-shell services-shell" lang={language}>
+      <SiteNav
+        ariaLabel={copy.accessibility.primaryNavigation}
+        language={language}
+        languageLabels={copy.languageToggle}
+        languageSelectorLabel={copy.accessibility.languageSelector}
+        links={copy.nav.links}
+        name={copy.nav.name}
+        onLanguageChange={setLanguage}
+      />
+
+      <section className="services-hero" id="top">
+        <div className="hero-copy">
+          <p className="eyebrow">{copy.hero.eyebrow}</p>
+          <h1>{copy.hero.title}</h1>
+          <p className="hero-lede">{copy.hero.body}</p>
+          <div className="services-hero-actions">
+            <Link className="primary-action" href="#contact">
+              {copy.hero.cta}
+            </Link>
+            <Link className="secondary-action" href="/#work">
+              {copy.hero.secondaryCta}
+            </Link>
+          </div>
+        </div>
+        <ServiceOrbitScene ariaLabel={copy.accessibility.orbitLabel} />
+      </section>
+
+      <section className="content-section" id="pillars">
+        <SectionHeader {...copy.pillars} />
+        <div className="card-grid three-columns">
+          {copy.pillars.items.map((item, index) => (
+            <ServiceCard
+              item={item}
+              index={index}
+              key={item.title}
+              tagListLabel={copy.accessibility.serviceTagsLabel}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="content-section section-band" id="packages">
+        <SectionHeader {...copy.packages} />
+        <div className="card-grid three-columns">
+          {copy.packages.items.map((item, index) => (
+            <ServiceCard
+              item={item}
+              index={index}
+              key={item.title}
+              tagListLabel={copy.accessibility.serviceTagsLabel}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className="content-section process-section" id="process">
+        <SectionHeader {...copy.process} />
+        <ol className="process-list">
+          {copy.process.steps.map((step, index) => (
+            <li key={step.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="content-section fit-section section-band" id="fit">
+        <div>
+          <p className="eyebrow">{copy.fit.eyebrow}</p>
+          <h2>{copy.fit.title}</h2>
+          <p>{copy.fit.body}</p>
+        </div>
+        <ul className="fit-list">
+          {copy.fit.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <footer className="content-section contact-section" id="contact">
+        <p className="eyebrow">{copy.contact.eyebrow}</p>
+        <h2>{copy.contact.title}</h2>
+        <p>{copy.contact.body}</p>
+        <ContactLinks links={copy.contactLinks} variant="footer" />
+      </footer>
+    </main>
+  );
+}
