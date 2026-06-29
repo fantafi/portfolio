@@ -232,6 +232,49 @@ h3 {
   color: #ffffff;
 }
 
+.text-link,
+.primary-action,
+.secondary-action {
+  align-items: center;
+  border-radius: 8px;
+  display: inline-flex;
+  font-weight: 800;
+  min-height: 44px;
+  padding: 0 18px;
+}
+
+.text-link {
+  border: 1px solid var(--accent);
+  color: var(--accent-strong);
+}
+
+.text-link:hover {
+  background: var(--foreground);
+  border-color: var(--foreground);
+  color: #ffffff;
+}
+
+.primary-action {
+  background: var(--foreground);
+  border: 1px solid var(--foreground);
+  color: #ffffff;
+}
+
+.primary-action:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.secondary-action {
+  border: 1px solid var(--line);
+  color: var(--foreground);
+}
+
+.secondary-action:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
 .hero-scene {
   isolation: isolate;
   min-height: 460px;
@@ -270,6 +313,96 @@ h3 {
   display: block;
   height: 26px;
   width: 26px;
+}
+
+.services-hero {
+  align-items: center;
+  display: grid;
+  gap: 42px;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+  min-height: calc(100svh - 73px);
+  padding: 72px 40px 80px;
+}
+
+.services-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.services-teaser .section-header {
+  padding-bottom: 18px;
+}
+
+.service-orbit-scene {
+  isolation: isolate;
+  min-height: 460px;
+  position: relative;
+}
+
+.service-orbit-scene canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.service-orbit-scene::before {
+  background:
+    linear-gradient(145deg, rgba(20, 122, 112, 0.12), rgba(242, 184, 75, 0.12)),
+    repeating-linear-gradient(0deg, rgba(23, 32, 27, 0.08) 0 1px, transparent 1px 30px);
+  border: 1px solid rgba(20, 122, 112, 0.14);
+  border-radius: 8px;
+  content: "";
+  inset: 9% 4%;
+  position: absolute;
+  z-index: -1;
+}
+
+.service-orbit-labels {
+  inset: 14% 8%;
+  pointer-events: none;
+  position: absolute;
+}
+
+.service-orbit-labels span,
+.service-orbit-fallback span {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(20, 122, 112, 0.18);
+  border-radius: 999px;
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 8px 11px;
+  position: absolute;
+}
+
+.service-orbit-labels span:nth-child(1) {
+  left: 8%;
+  top: 18%;
+}
+
+.service-orbit-labels span:nth-child(2) {
+  right: 8%;
+  top: 38%;
+}
+
+.service-orbit-labels span:nth-child(3) {
+  bottom: 18%;
+  left: 32%;
+}
+
+.service-orbit-fallback {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  height: 100%;
+  justify-content: center;
+  min-height: 460px;
+}
+
+.service-orbit-fallback span {
+  position: static;
 }
 
 .content-section {
@@ -350,6 +483,60 @@ h3 {
   padding: 10px 0;
 }
 
+.process-list,
+.fit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.process-list {
+  display: grid;
+  gap: 14px;
+}
+
+.process-list li {
+  align-items: flex-start;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: auto 1fr;
+  padding: 20px;
+}
+
+.process-list span {
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.process-list p,
+.fit-section p,
+.fit-list li {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.fit-section {
+  display: grid;
+  gap: 34px;
+  grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1fr);
+}
+
+.fit-list {
+  display: grid;
+  gap: 12px;
+}
+
+.fit-list li {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+
 .about-section {
   display: grid;
   gap: 40px;
@@ -418,11 +605,17 @@ h3 {
   }
 
   .hero-section,
-  .about-section {
+  .services-hero,
+  .about-section,
+  .fit-section {
     grid-template-columns: 1fr;
   }
 
   .hero-section {
+    padding: 54px 20px 66px;
+  }
+
+  .services-hero {
     padding: 54px 20px 66px;
   }
 
@@ -459,7 +652,9 @@ h3 {
   }
 
   .hero-scene,
-  .hero-scene-fallback {
+  .hero-scene-fallback,
+  .service-orbit-scene,
+  .service-orbit-fallback {
     min-height: 320px;
   }
 }
