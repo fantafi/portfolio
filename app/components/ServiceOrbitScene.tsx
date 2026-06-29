@@ -119,8 +119,7 @@ export default function ServiceOrbitScene({
       renderer.setSize(width, height, false);
     };
 
-    let frameId = 0;
-    const render = () => {
+    const renderFrame = () => {
       const elapsed = performance.now() * 0.001;
       nodeMeshes.forEach((node, index) => {
         const angle = node.angle + (reducedMotion ? 0 : elapsed * 0.42);
@@ -144,16 +143,32 @@ export default function ServiceOrbitScene({
       }
 
       renderer.render(scene, camera);
-      frameId = window.requestAnimationFrame(render);
+    };
+
+    let frameId = 0;
+    const animate = () => {
+      renderFrame();
+      if (reducedMotion) {
+        return;
+      }
+
+      frameId = window.requestAnimationFrame(animate);
+    };
+
+    const handleResize = () => {
+      resize();
+      if (reducedMotion) {
+        renderFrame();
+      }
     };
 
     resize();
-    render();
-    window.addEventListener("resize", resize);
+    animate();
+    window.addEventListener("resize", handleResize);
 
     return () => {
       window.cancelAnimationFrame(frameId);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", handleResize);
       renderer.dispose();
       ringGeometry.dispose();
       ringMaterial.dispose();
