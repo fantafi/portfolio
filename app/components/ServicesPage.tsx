@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import { type MouseEvent, useEffect, useState } from "react";
 import { servicesPageContent, type Language } from "../content/portfolio";
 import ContactLinks from "./ContactLinks";
 import SectionHeader from "./SectionHeader";
@@ -9,9 +8,47 @@ import ServiceCard from "./ServiceCard";
 import ServiceOrbitScene from "./ServiceOrbitScene";
 import SiteNav from "./SiteNav";
 
+function scrollToHashTarget() {
+  const id = window.location.hash.slice(1);
+  if (!id) {
+    return;
+  }
+
+  const target = document.getElementById(id);
+  if (!target) {
+    return;
+  }
+
+  const top = target.getBoundingClientRect().top + window.scrollY - 88;
+  window.scrollTo({
+    behavior: "auto",
+    top: Math.max(top, 0),
+  });
+}
+
 export default function ServicesPage() {
   const [language, setLanguage] = useState<Language>("en");
   const copy = servicesPageContent[language];
+
+  useEffect(() => {
+    scrollToHashTarget();
+    window.addEventListener("hashchange", scrollToHashTarget);
+
+    return () => {
+      window.removeEventListener("hashchange", scrollToHashTarget);
+    };
+  }, []);
+
+  const handleHashLinkClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    const href = event.currentTarget.getAttribute("href");
+    if (!href?.startsWith("#")) {
+      return;
+    }
+
+    event.preventDefault();
+    window.history.pushState(null, "", href);
+    scrollToHashTarget();
+  };
 
   return (
     <main className="portfolio-shell services-shell" lang={language}>
@@ -31,12 +68,12 @@ export default function ServicesPage() {
           <h1>{copy.hero.title}</h1>
           <p className="hero-lede">{copy.hero.body}</p>
           <div className="services-hero-actions">
-            <Link className="primary-action" href="#contact">
+            <a className="primary-action" href="#contact" onClick={handleHashLinkClick}>
               {copy.hero.cta}
-            </Link>
-            <Link className="secondary-action" href="/#work">
+            </a>
+            <a className="secondary-action" href="/#work">
               {copy.hero.secondaryCta}
-            </Link>
+            </a>
           </div>
         </div>
         <ServiceOrbitScene ariaLabel={copy.accessibility.orbitLabel} />

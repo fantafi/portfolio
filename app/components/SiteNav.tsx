@@ -1,5 +1,4 @@
 import type { Language, NavLink } from "../content/portfolio";
-import Link from "next/link";
 import LanguageToggle from "./LanguageToggle";
 
 type SiteNavProps = {
@@ -23,14 +22,14 @@ export default function SiteNav({
 }: SiteNavProps) {
   return (
     <header className="site-nav">
-      <Link className="site-mark" href="/" aria-label={name}>
+      <a className="site-mark" href="/" aria-label={name}>
         {name}
-      </Link>
+      </a>
       <nav aria-label={ariaLabel}>
         {links.map((link) => (
-          <Link href={link.href} key={link.href}>
+          <a href={link.href} key={link.href}>
             {link.label}
-          </Link>
+          </a>
         ))}
       </nav>
       <LanguageToggle
