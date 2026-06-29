@@ -41,6 +41,7 @@ export type ServicesPageCopy = {
     serviceTagsLabel: string;
     orbitLabel: string;
   };
+  orbitLabels: [string, string, string];
   hero: {
     eyebrow: string;
     title: string;
@@ -406,6 +407,7 @@ export const servicesPageContent: Record<Language, ServicesPageCopy> = {
       serviceTagsLabel: "Tags for",
       orbitLabel: "Service orbit showing web app, mobile app, and AI tooling",
     },
+    orbitLabels: ["Web App", "Mobile App", "AI Tooling"],
     hero: {
       eyebrow: "Freelance product development",
       title: "Build web apps, mobile apps, and AI tools that are ready to ship.",
@@ -515,6 +517,7 @@ export const servicesPageContent: Record<Language, ServicesPageCopy> = {
       serviceTagsLabel: "Nhãn cho",
       orbitLabel: "Mô hình orbit cho web app, mobile app và AI tooling",
     },
+    orbitLabels: ["Ứng dụng web", "Ứng dụng mobile", "Công cụ AI"],
     hero: {
       eyebrow: "Freelance product development",
       title: "Xây dựng web app, mobile app và AI tool sẵn sàng triển khai.",

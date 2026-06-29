@@ -76,7 +76,10 @@ export default function ServicesPage() {
             </a>
           </div>
         </div>
-        <ServiceOrbitScene ariaLabel={copy.accessibility.orbitLabel} />
+        <ServiceOrbitScene
+          ariaLabel={copy.accessibility.orbitLabel}
+          labels={copy.orbitLabels}
+        />
       </section>
 
       <section className="content-section" id="pillars">

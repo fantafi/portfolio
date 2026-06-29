@@ -608,7 +608,14 @@ h3 {
   }
 
   .site-nav nav {
-    display: none;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+
+  .site-nav nav a {
+    font-size: 0.88rem;
   }
 
   .hero-section,

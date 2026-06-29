@@ -5,16 +5,18 @@ import * as THREE from "three";
 
 type ServiceOrbitSceneProps = {
   ariaLabel: string;
+  labels: readonly [string, string, string];
 };
 
 const orbitNodes = [
-  { label: "Web App", color: 0x147a70, angle: 0 },
-  { label: "Mobile App", color: 0x38bdf8, angle: (Math.PI * 2) / 3 },
-  { label: "AI Tooling", color: 0xf2b84b, angle: (Math.PI * 4) / 3 },
+  { color: 0x147a70, angle: 0 },
+  { color: 0x38bdf8, angle: (Math.PI * 2) / 3 },
+  { color: 0xf2b84b, angle: (Math.PI * 4) / 3 },
 ];
 
 export default function ServiceOrbitScene({
   ariaLabel,
+  labels,
 }: ServiceOrbitSceneProps) {
   const mountRef = useRef<HTMLDivElement>(null);
   const [showFallback, setShowFallback] = useState(false);
@@ -136,6 +138,11 @@ export default function ServiceOrbitScene({
         core.rotation.y += 0.004;
       }
 
+      if (reducedMotion) {
+        renderer.render(scene, camera);
+        return;
+      }
+
       renderer.render(scene, camera);
       frameId = window.requestAnimationFrame(render);
     };
@@ -166,14 +173,14 @@ export default function ServiceOrbitScene({
       aria-label={ariaLabel}
     >
       <div className="service-orbit-labels" aria-hidden="true">
-        {orbitNodes.map((node) => (
-          <span key={node.label}>{node.label}</span>
+        {orbitNodes.map((node, index) => (
+          <span key={node.color}>{labels[index]}</span>
         ))}
       </div>
       {showFallback ? (
         <div className="service-orbit-fallback" aria-hidden="true">
-          {orbitNodes.map((node) => (
-            <span key={node.label}>{node.label}</span>
+          {orbitNodes.map((node, index) => (
+            <span key={node.color}>{labels[index]}</span>
           ))}
         </div>
       ) : null}
